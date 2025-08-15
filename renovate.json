@@ -1,0 +1,91 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":dependencyDashboard",
+    ":semanticCommits",
+    ":separatePatchReleases",
+    "group:monorepos",
+    "group:recommended",
+    "workarounds:all"
+  ],
+  "timezone": "Asia/Shanghai",
+  "schedule": ["after 10pm every weekday", "before 5am every weekday", "every weekend"],
+  "labels": ["dependencies"],
+  "assigneesFromCodeOwners": true,
+  "reviewersFromCodeOwners": true,
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 5am on monday"]
+  },
+  "packageRules": [
+    {
+      "description": "自动合并补丁版本更新",
+      "matchUpdateTypes": ["patch"],
+      "automerge": true,
+      "automergeType": "branch"
+    },
+    {
+      "description": "自动合并 devDependencies 的小版本更新",
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["minor"],
+      "automerge": true,
+      "automergeType": "branch"
+    },
+    {
+      "description": "TypeScript 相关依赖分组",
+      "matchPackageNames": ["typescript", "@types/node"],
+      "matchPackagePatterns": ["@types/"],
+      "groupName": "TypeScript",
+      "schedule": ["every weekend"]
+    },
+    {
+      "description": "构建工具相关依赖分组",
+      "matchPackageNames": ["@rsbuild/core", "@rslib/core"],
+      "groupName": "Build Tools",
+      "schedule": ["every weekend"]
+    },
+    {
+      "description": "测试工具相关依赖分组",
+      "matchPackageNames": ["@playwright/test", "playwright"],
+      "groupName": "Testing Tools",
+      "schedule": ["every weekend"]
+    },
+    {
+      "description": "代码质量工具相关依赖分组",
+      "matchPackageNames": ["@biomejs/biome", "simple-git-hooks"],
+      "groupName": "Code Quality",
+      "schedule": ["every weekend"]
+    },
+    {
+      "description": "Vue 生态系统相关依赖分组",
+      "matchPackageNames": ["unplugin-vue-components", "ant-design-vue"],
+      "matchPackagePatterns": ["vue", "@vue/"],
+      "groupName": "Vue Ecosystem",
+      "schedule": ["every weekend"]
+    },
+    {
+      "description": "内部依赖包特殊处理",
+      "matchPackagePatterns": ["@winner-fed/"],
+      "groupName": "Internal Packages",
+      "schedule": ["every weekend"],
+      "automerge": false,
+      "reviewRequired": true
+    },
+    {
+      "description": "主要版本更新需要手动审核",
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "schedule": ["every weekend"],
+      "labels": ["dependencies", "breaking-change"]
+    }
+  ],
+  "vulnerabilityAlerts": {
+    "labels": ["security", "dependencies"],
+    "schedule": ["at any time"]
+  },
+  "prConcurrentLimit": 3,
+  "prHourlyLimit": 2,
+  "rebaseWhen": "conflicted",
+  "platformAutomerge": true
+}
