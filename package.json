@@ -1,5 +1,5 @@
 {
-  "name": "winjs-plugin-template",
+  "name": "@winner-fed/plugin-element-plus",
   "keywords": [
     "winjs",
     "plugin",
@@ -11,10 +11,10 @@
     "typescript",
     "biome"
   ],
-  "version": "0.0.0",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/winjs-dev/winjs-plugin-template.git"
+    "url": "git+https://github.com/winjs-dev/winjs-plugin-element-plus.git"
   },
   "license": "MIT",
   "type": "module",
@@ -52,13 +52,16 @@
     "@winner-fed/winjs": "*",
     "playwright": "^1.53.2",
     "simple-git-hooks": "^2.13.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "unplugin-vue-components": "28.4.1"
   },
   "peerDevDependencies": {
-    "@winner-fed/winjs": "*"
+    "@winner-fed/winjs": "*",
+    "unplugin-vue-components": "28.4.1"
   },
   "peerDependencies": {
-    "@winner-fed/utils": "*"
+    "@winner-fed/utils": "*",
+    "element-plus": "^2.3.8"
   },
   "peerDependenciesMeta": {
     "@rsbuild/core": {
