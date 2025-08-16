@@ -127,4 +127,4 @@ jobs:
           echo "🎉 发布成功!"
           echo "📦 版本: ${{ steps.get_version.outputs.version }}"
           echo "🏷️ 标签: ${{ steps.get_version.outputs.tag_name }}"
-          echo "📝 npm: https://www.npmjs.com/package/winjs-plugin-template"
+          echo "📝 npm: https://www.npmjs.com/package/@winner-fed/plugin-element-plus"
