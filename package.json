@@ -1,5 +1,6 @@
 {
   "name": "@winner-fed/plugin-element-plus",
+  "description": "A Winjs plugin for element-plus",
   "keywords": [
     "winjs",
     "plugin",
