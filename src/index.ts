@@ -3,7 +3,14 @@ import { deepmerge, resolve } from '@winner-fed/utils';
 import type { IApi } from '@winner-fed/winjs';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
-function resolveProjectDep(opts: { pkg: any; cwd: string; dep: string }) {
+function resolveProjectDep(opts: {
+  pkg: {
+    dependencies?: Record<string, string>;
+    devDependencies?: Record<string, string>;
+  };
+  cwd: string;
+  dep: string;
+}) {
   if (
     opts.pkg.dependencies?.[opts.dep] ||
     opts.pkg.devDependencies?.[opts.dep]
